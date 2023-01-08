@@ -1,18 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 
-function ToDoList(prop) {
-  const [isComplete, setIsComplete] = useState(false);
-
-  function handleClick(event) {
-    isComplete ? setIsComplete(false) : setIsComplete(true);
-  }
-
+function ToDoList(props) {
   return (
     <li
-      style={{ textDecoration: isComplete ? "line-through" : "none" }}
-      onClick={handleClick}
+      onClick={() => {
+        props.onChecked(props.id);
+      }}
     >
-      {prop.itemName}
+      {props.itemName}
     </li>
   );
 }
